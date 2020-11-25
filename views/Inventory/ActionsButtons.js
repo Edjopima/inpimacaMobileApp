@@ -16,13 +16,32 @@ const styles = StyleSheet.create({
     }
 });
 
-const ActionButtons = () => {
+const ActionButtons = (element) => {
+    const dispatch=useDispatch();
+    const modalShow=useSelector((state)=>state.delModalShow);
+
+    const setModalShow = (type) =>{
+        (type==='edit')?
+            dispatch({
+                type:'SHOW_EDIT_MODAL',
+                payload:true
+            }):
+            dispatch({
+                type:'SHOW_DEL_MODAL',
+                payload:true,
+            })
+    }
+
     return (
         <View style={styles.ActionButtons}>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={()=>setModalShow('edit')}
+            >
                 <FontAwesomeIcon icon={faPencilRuler} style={styles.icon} />
             </TouchableOpacity>
-            <TouchableOpacity>
+            <TouchableOpacity
+                onPress={()=>setModalShow('del')}
+            >
                 <FontAwesomeIcon icon = {faTrash} style={styles.icon} />
             </TouchableOpacity>
     </View>

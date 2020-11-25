@@ -7,7 +7,7 @@ import ActionButtons from './ActionsButtons';
 import {useDispatch, useSelector} from 'react-redux';
 
 const HeadTable = ['Producto', 'Precio $', 'Precio Bs.', 'Acciones'];
-const DataTable = [];
+let DataTable = [];
 
 const styles = StyleSheet.create({
   tableContainer: {
@@ -54,7 +54,7 @@ const InventoryTable = () => {
       }))
       .catch((err) => console.error(err));
   },[])
-
+  DataTable = []; 
   setDataTable(products, DataTable, dolar);
   return (
     <View style={styles.tableContainer}>

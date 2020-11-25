@@ -10,6 +10,8 @@ target 'inpimacaMobileApp' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNCPicker', :path => '../node_modules/@react-native-picker/picker'
+
   target 'inpimacaMobileAppTests' do
     inherit! :complete
     # Pods for testing

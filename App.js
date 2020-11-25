@@ -12,6 +12,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Header from './views/Header/Header';
 import Inventory from './views/Inventory/Inventory.js';
+import Signin from './views/Signin/Signin';
 
 const initialState = {
   isSignedIn: false,
@@ -24,6 +25,8 @@ const initialState = {
   dolar: 0,
   products: [],
   productsFiltered: [],
+  editModalShow:false,
+  delModalShow:false,
 };
 
 function reducer(state, action) {
@@ -57,8 +60,11 @@ function reducer(state, action) {
         return{...state,productsFiltered:productsByCategory}
       }
     }
-    case 'SHOW_MODAL':{
-      return {...state, modal:action.payload}
+    case 'SHOW_EDIT_MODAL':{
+      return {...state,editModalShow:action.payload}
+    }
+    case 'SHOW_DEL_MODAL':{
+      return {...state,delModalShow:action.payload}
     }
     default:{
       return state
@@ -71,9 +77,9 @@ const store = createStore(reducer, initialState);
 const App = () => {
   return (
     <Provider store={store}>
-      <View>
-        <Header />
-        <Inventory />
+      <View style={{flex:1}}>
+        <Header/>
+        <Inventory/>
       </View>
     </Provider>
   );
