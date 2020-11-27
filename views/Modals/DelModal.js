@@ -3,17 +3,17 @@ import {View,TouchableOpacity,Text} from 'react-native';
 import styles from './ModalStyles';
 import {useDispatch,useSelector} from 'react-redux';
 
-const DelModal = (element) =>{
-
+const DelModal = ({element}) =>{
+    const dispatch=useDispatch();
     const hideModal = () => {
         dispatch({
-            type:'SHOW_DEL_MODAL',
-            payload:false
+            type:'SHOW_MODAL',
+            payload:{
+                showModal:false,
+                editModalElement:null
+            }
         });
     };
-
-    const modalShow = useSelector(state=>state.delModalShow);
-    const dispatch=useDispatch();
 
     return(
 		<View style={styles.modalContainer}>
@@ -31,6 +31,7 @@ const DelModal = (element) =>{
 
             </View>
         </View>
-    </View>
 	);
 };
+
+export default DelModal;

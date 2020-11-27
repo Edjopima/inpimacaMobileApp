@@ -4,7 +4,7 @@ import {View, StyleSheet , TouchableOpacity,Text,ScrollView} from 'react-native'
 // eslint-disable-next-line prettier/prettier
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import ActionButtons from './ActionsButtons';
-import {useDispatch, useSelector} from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const HeadTable = ['Producto', 'Precio $', 'Precio Bs.', 'Acciones'];
 let DataTable = [];
@@ -27,24 +27,40 @@ const styles = StyleSheet.create({
   },
 });
 
-const setDataTable = (products, DataTable, dolar) => {
-  products.map((product) => {
-    const arr = [];
-    arr.push(
-      product.product,
-      product.price,
-      Math.round(product.price * dolar, 2),
-      ActionButtons(),
-    );
-    DataTable.push(arr);
-  });
-  return DataTable;
-};
+
 
 const InventoryTable = () => {
   const products = useSelector((state) => state.productsFiltered);
   const dolar = useSelector((state) => state.dolar);
   const dispatch = useDispatch();
+
+  const setModalShow = (type, product) => {
+    dispatch({
+      type:'SHOW_MODAL',
+      payload:{
+        showModal:true,
+        modalStyle:type,
+        editModalElement:product
+      }
+    })
+  }
+
+  const setDataTable = (products, DataTable, dolar) => {
+    DataTable=[];
+    products.map((product) => {
+      const arr = [];
+      arr.push(
+        product.product,
+        product.price,
+        Math.round(product.price * dolar, 2),
+        ActionButtons(setModalShow, product),
+      );
+      DataTable.push(arr);
+    });
+    return DataTable;
+  };
+
+
   useEffect(() => {
     fetch('https://inpimaca-api.herokuapp.com/inventario')
       .then(response => response.json())
@@ -54,8 +70,7 @@ const InventoryTable = () => {
       }))
       .catch((err) => console.error(err));
   },[])
-  DataTable = []; 
-  setDataTable(products, DataTable, dolar);
+  DataTable=setDataTable(products, DataTable, dolar);
   return (
     <View style={styles.tableContainer}>
       <Table>
@@ -70,7 +85,7 @@ const InventoryTable = () => {
           <Rows
             data={DataTable}
             style={styles.tableContent}
-            textStyle={{ textAlign: 'center', fontSize:14 }}
+            textStyle={{ textAlign: 'center', fontSize: 14 }}
           />
         </Table>
       </ScrollView>

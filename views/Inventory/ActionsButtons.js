@@ -3,6 +3,7 @@ import React from 'react';
 import {View,TouchableOpacity,Image,StyleSheet} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPencilRuler, faTrash } from '@fortawesome/free-solid-svg-icons'
+import {useSelector,useDispatch} from 'react-redux';
 
 const styles = StyleSheet.create({
     ActionButtons:{
@@ -16,35 +17,21 @@ const styles = StyleSheet.create({
     }
 });
 
-const ActionButtons = (element) => {
-    const dispatch=useDispatch();
-    const modalShow=useSelector((state)=>state.delModalShow);
 
-    const setModalShow = (type) =>{
-        (type==='edit')?
-            dispatch({
-                type:'SHOW_EDIT_MODAL',
-                payload:true
-            }):
-            dispatch({
-                type:'SHOW_DEL_MODAL',
-                payload:true,
-            })
-    }
-
+const ActionButtons = (setModalShow, product) => {
     return (
         <View style={styles.ActionButtons}>
             <TouchableOpacity
-                onPress={()=>setModalShow('edit')}
+                onPress={()=>setModalShow('edit',product)}
             >
                 <FontAwesomeIcon icon={faPencilRuler} style={styles.icon} />
             </TouchableOpacity>
             <TouchableOpacity
-                onPress={()=>setModalShow('del')}
+                onPress={()=>setModalShow('del',product)}
             >
                 <FontAwesomeIcon icon = {faTrash} style={styles.icon} />
             </TouchableOpacity>
-    </View>
+        </View>
     );
 };
 

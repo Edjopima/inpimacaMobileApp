@@ -25,8 +25,11 @@ const initialState = {
   dolar: 0,
   products: [],
   productsFiltered: [],
-  editModalShow:false,
-  delModalShow:false,
+  modal:{
+    showModal:false,
+    modalStyle:'edit',
+    editModalElement:null
+  }
 };
 
 function reducer(state, action) {
@@ -60,11 +63,8 @@ function reducer(state, action) {
         return{...state,productsFiltered:productsByCategory}
       }
     }
-    case 'SHOW_EDIT_MODAL':{
-      return {...state,editModalShow:action.payload}
-    }
-    case 'SHOW_DEL_MODAL':{
-      return {...state,delModalShow:action.payload}
+    case 'SHOW_MODAL':{
+      return {...state,modal:action.payload}
     }
     default:{
       return state

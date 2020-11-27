@@ -4,17 +4,23 @@ import {Picker} from '@react-native-picker/picker';
 import styles from './ModalStyles'
 import { useDispatch, useSelector } from 'react-redux';
 
-const EditAddModal = (element = '', type) => {
+const EditAddModal = ({element,type}) => {
     const dispatch = useDispatch();
-    const modalShow = useSelector((store)=>store.editModalShow)
+    const store = useSelector((store)=>store)
+
     const [product,setProduct] = useState(type==='edit'? element.product: '' );
     const [price,setPrice] = useState( type==='edit'? element.price: '');
     const [category, setCategory] = useState( type==='edit'?element.category:'')
 
+    console.log(element,product,price,category)
+    
     const hideModal = () => {
         dispatch({
-            type:'SHOW_EDIT_MODAL',
-            payload:false
+            type:'SHOW_MODAL',
+            payload:{
+                showModal:false,
+                editModalElement:null
+            }
         });
     };
 

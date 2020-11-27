@@ -1,13 +1,16 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import {View, Text,Modal} from 'react-native';
 import InventoryTable from './InventoryTable';
 import DolarMonitor from './DolarMonitor'
 import SearchBox from './SearchBox';
 import FilterByCategory from './FilterByCategory'
 import EditAddModal from '../Modals/EditAddModal'
 import DelModal from '../Modals/DelModal'
+import {useSelector} from 'react-redux';
+import ModalContainer from '../Modals/ModalContainer';
 
 const Inventory = () => {
+    const state = useSelector((state)=> state)
     return(
         <View style={{flexDirection:'column'}}>
             <Text style={{textAlign:'center', fontSize:30, fontWeight:'bold'}}>Inventario</Text>
@@ -15,8 +18,8 @@ const Inventory = () => {
             <SearchBox />
             <FilterByCategory/>
             <InventoryTable/>
-            <Modal visible={modalShow} transparent={true}>
-                <EditAddModal type='edit' />
+            <Modal visible={state.modal.showModal} transparent={true}>
+                <ModalContainer/>
             </Modal>
         </View>
     );
