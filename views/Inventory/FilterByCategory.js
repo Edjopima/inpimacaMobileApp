@@ -1,26 +1,107 @@
 import React from 'react';
 import {Text,View,StyleSheet, TouchableOpacity} from 'react-native';
+import { useDispatch } from 'react-redux';
+
+
+const styles = StyleSheet.create({
+    FilterContainer:{
+        flexDirection:'row',
+        justifyContent:'space-between',
+        paddingHorizontal:10,
+        paddingBottom:10
+    },
+    FilterSelected:{
+        color:'#FF511B',
+        borderBottomColor:'#FF511B',
+        borderBottomWidth:1,
+    },
+    item:{
+        color:'black'
+    },
+})
+let todo=styles.FilterSelected;
+let viveres,dulces,lacteos,aseoPersonal,otros = styles.item;
 
 const FilterByCategory = () => {
+    const dispatch = useDispatch();
+    const dispatchFilter = (data)=>{
+        dispatch({
+            type:'FILTER_BY_CATEGORY',
+            payload:data
+        })
+    }
+    const clearSelection= ()=>{
+        todo=styles.item;
+        viveres=styles.item;
+        dulces=styles.item;
+        lacteos=styles.item;
+        aseoPersonal=styles.item;
+        otros=styles.item;
+    }
+    const handleFilter = (category) =>{
+        switch(category){
+            case 'T':{
+                clearSelection();
+                todo=styles.FilterSelected;
+                dispatchFilter(category);
+                break;
+            }
+            case 'V':{
+                clearSelection();
+                viveres=styles.FilterSelected;
+                dispatchFilter(category);
+                break
+            }
+            case 'D':{
+                clearSelection();
+                dulces=styles.FilterSelected;
+                dispatchFilter(category)
+                break
+            }
+            case 'L':{
+                clearSelection();
+                lacteos=styles.FilterSelected;
+                dispatchFilter(category);
+                break
+            }
+            case 'AP':{
+                clearSelection();
+                aseoPersonal=styles.FilterSelected;
+                dispatchFilter(category);
+                break
+            }
+            case 'O':{
+                clearSelection();
+                otros=styles.FilterSelected;
+                dispatchFilter(category);
+                break
+            }
+            default:{
+                clearSelection();
+                break;
+            }
+        }
+    }
+
     return(
-        <View style={{flexDirection:'row', justifyContent:'center'}}>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Todo</Text>
+        <View style={styles.FilterContainer}>
+            <TouchableOpacity onPress={()=>handleFilter('T')}>
+                <Text style={todo}>Todo</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Viveres</Text>
+            <TouchableOpacity onPress={()=>handleFilter('V')}>
+                <Text style={viveres}>Viveres</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Dulces</Text>
+            <TouchableOpacity  onPress={()=>handleFilter('D')}>
+                <Text style={dulces}>Dulces</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Lacteos</Text>
+            <TouchableOpacity onPress={()=>handleFilter('L')}>
+                <Text style={lacteos}>Lacteos</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Aseo Personal</Text>
+            <TouchableOpacity onPress={()=>handleFilter('AP')}>
+                <Text style={aseoPersonal}>Aseo Personal</Text>
             </TouchableOpacity>
-            <TouchableOpacity>
-                <Text style={{paddingHorizontal:6}}>Otros</Text>
+            <TouchableOpacity onPress={()=>handleFilter('O')}>
+                <Text style={otros}>Otros</Text>
             </TouchableOpacity>
         </View>
     );

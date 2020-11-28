@@ -33,10 +33,11 @@ const SearchBox = () => {
 
     const setModalShow = () => {
         dispatch({
-            type:'SHOW_EDIT_MODAL',
+            type:'SHOW_MODAL',
             payload:{
-                editModalShow:true,
-                editModalElement:{}
+                showModal:true,
+                editModalElement:null,
+                modalStyle:'add'
             }
         });
     };
