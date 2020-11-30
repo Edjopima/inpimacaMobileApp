@@ -5,14 +5,11 @@
  * @format
  * @flow strict-local
  */
-
+import 'react-native-gesture-handler';
 import React from 'react';
-import { View, StyleSheet, TouchableOpacity, Text } from 'react-native';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import Header from './views/Header/Header';
-import Inventory from './views/Inventory/Inventory.js';
-import Signin from './views/Signin/Signin';
+import AppStack from './navigator/Stack';
 
 const initialState = {
   isSignedIn: false,
@@ -77,10 +74,7 @@ const store = createStore(reducer, initialState);
 const App = () => {
   return (
     <Provider store={store}>
-      <View style={{flex:1}}>
-        <Header/>
-        <Inventory/>
-      </View>
+      <AppStack/>
     </Provider>
   );
 };

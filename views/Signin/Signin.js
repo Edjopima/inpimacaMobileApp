@@ -1,49 +1,12 @@
 import React,{useState} from 'react';
 import {View, Text, TextInput, TouchableOpacity, Alert, Image, StyleSheet,Button} from 'react-native';
-import { Row } from 'react-native-table-component';
 import {useDispatch} from 'react-redux';
-
-const styles = StyleSheet.create({
-    logo:{
-        width:90,
-        height:90,
-        borderRadius:80,
-        margin:10
-    },
-    title:{
-        fontSize:25,
-        fontWeight:'bold',
-        textAlign:"center",
-        margin:10,
-        marginBottom:20
-    },
-    input:{
-        fontSize:15,
-        fontStyle:'italic',
-        borderBottomWidth:1,
-        borderColor:'red',
-        width:250,
-        marginBottom:10,
-        borderColor:'#FC005F',
-        padding:2,
-    },
-    button: {
-        width:110,
-        height:40,
-        justifyContent:'center',
-        alignItems:'center',
-        borderRadius:30,
-        borderWidth:1,
-        borderColor:'#FC005F',
-        margin:10,
-    },
-    buttomText:{
-        color:'#FC005F',
-        fontSize:12,
-    }
-});
+import {useNavigation} from '@react-navigation/native';
+import styles from './styles'
 
 const Signin = () => {
+    const navigation=useNavigation();
+
     const [user, setUser] = useState('');
     const [password, setPassword] = useState('');
 
@@ -64,11 +27,11 @@ const Signin = () => {
         .then(response => response.json())
         .then(user => {
             if (user.id){
-/*                 dispatch({
+                 dispatch({
                     type:'SET_LOGED_USER',
                     payload:user
-                }); */
-                console.log('sesion inciada')
+                });
+                navigation.navigate('Inventory')
             }else {
                 throw 'Usuario/contraseña invalido';
             }

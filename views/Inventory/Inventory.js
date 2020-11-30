@@ -8,11 +8,13 @@ import EditAddModal from '../Modals/EditAddModal'
 import DelModal from '../Modals/DelModal'
 import {useSelector} from 'react-redux';
 import ModalContainer from '../Modals/ModalContainer';
+import Header from '../Header/Header';
 
 const Inventory = () => {
     const state = useSelector((state)=> state)
     return(
         <View style={{flexDirection:'column'}}>
+            <Header/>
             <Text style={{textAlign:'center', fontSize:30, fontWeight:'bold'}}>Inventario</Text>
             <DolarMonitor/>
             <SearchBox />

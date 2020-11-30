@@ -1,22 +1,9 @@
 import React from 'react';
 // eslint-disable-next-line prettier/prettier
-import {View,TouchableOpacity,Image,StyleSheet} from 'react-native';
+import {View,TouchableOpacity,StyleSheet} from 'react-native';
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faPencilRuler, faTrash } from '@fortawesome/free-solid-svg-icons'
-import {useSelector,useDispatch} from 'react-redux';
-
-const styles = StyleSheet.create({
-    ActionButtons:{
-        flexDirection:'row',
-        justifyContent:'center',
-        alignContent:'center',
-    },
-    icon:{
-        color:'#FF511B',
-        margin:10,
-    }
-});
-
+import styles from './styles';
 
 const ActionButtons = (setModalShow, product) => {
     return (

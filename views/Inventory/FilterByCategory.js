@@ -1,24 +1,8 @@
 import React from 'react';
-import {Text,View,StyleSheet, TouchableOpacity} from 'react-native';
+import {Text,View, TouchableOpacity} from 'react-native';
 import { useDispatch } from 'react-redux';
+import styles from './styles';
 
-
-const styles = StyleSheet.create({
-    FilterContainer:{
-        flexDirection:'row',
-        justifyContent:'space-between',
-        paddingHorizontal:10,
-        paddingBottom:10
-    },
-    FilterSelected:{
-        color:'#FF511B',
-        borderBottomColor:'#FF511B',
-        borderBottomWidth:1,
-    },
-    item:{
-        color:'black'
-    },
-})
 let todo=styles.FilterSelected;
 let viveres,dulces,lacteos,aseoPersonal,otros = styles.item;
 

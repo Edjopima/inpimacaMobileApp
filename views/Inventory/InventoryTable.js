@@ -5,29 +5,10 @@ import {View, StyleSheet , TouchableOpacity,Text,ScrollView} from 'react-native'
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import ActionButtons from './ActionsButtons';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './styles'
 
 const HeadTable = ['Producto', 'Precio $', 'Precio Bs.', 'Acciones'];
 let DataTable = [];
-
-const styles = StyleSheet.create({
-  tableContainer: {
-    borderRadius: 40,
-    backgroundColor: '#F5F8FA',
-  },
-  tableHeader:{
-    backgroundColor:'#F5F8FA',
-    borderTopLeftRadius:40,
-    borderTopRightRadius:40,
-    borderBottomWidth:1,
-    borderColor:'#FF511B',
-    height:40
-  },
-  tableContent:{
-    backgroundColor:'#F5F8FA',
-  },
-});
-
-
 
 const InventoryTable = () => {
   const products = useSelector((state) => state.productsFiltered);

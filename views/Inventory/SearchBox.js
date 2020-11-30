@@ -3,24 +3,8 @@ import { View, TextInput, TouchableOpacity, StyleSheet, Modal} from 'react-nativ
 import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
 import { faSearch, faPlus } from '@fortawesome/free-solid-svg-icons'
 import {useDispatch} from 'react-redux';
+import styles from './styles';
 
-const styles=StyleSheet.create({
-    searchBox:{
-        height: 40,
-        width: 300,
-        borderWidth: 1,
-        borderColor: 'red',
-        flexDirection: 'row',
-        alignItems:'center',
-        alignSelf:'center',
-        borderWidth:1,
-        borderColor:'#0074D5',
-        borderRadius:40,
-        paddingLeft:10,
-        paddingRight:10,
-        margin:10
-    },
-});
 const SearchBox = () => {
     const dispatch=useDispatch();
 
