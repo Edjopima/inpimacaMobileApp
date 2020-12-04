@@ -20,6 +20,7 @@ const initialState = {
     permissions: 0,
   },
   dolar: 0,
+  dolarToday:0,
   products: [],
   productsFiltered: [],
   modal:{
@@ -32,6 +33,7 @@ const initialState = {
 function reducer(state, action) {
   switch(action.type){
     case 'SET_LOGED_USER': {
+
       return {...state, isSignedin:true, user:{
         id:action.payload.id,
         userName:action.payload.user,
@@ -43,7 +45,8 @@ function reducer(state, action) {
       return {initialState}
     }
     case 'SET_DOLAR':{
-      return {...state, dolar:action.payload}
+      const {dolar,dolarToday}= action.payload;
+      return {...state, dolar,dolarToday}
     }
     case 'SET_PRODUCTS':{
       return {...state,products:action.payload,productsFiltered:action.payload}

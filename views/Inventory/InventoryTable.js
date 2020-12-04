@@ -1,11 +1,10 @@
 import React, {useEffect} from 'react';
-// eslint-disable-next-line prettier/prettier
-import {View, StyleSheet , TouchableOpacity,Text,ScrollView} from 'react-native';
-// eslint-disable-next-line prettier/prettier
+import {View, StyleSheet , TouchableOpacity,Text,ScrollView, RefreshControl} from 'react-native';
 import { Table, TableWrapper, Row, Rows, Col, Cols, Cell } from 'react-native-table-component';
 import ActionButtons from './ActionsButtons';
 import { useDispatch, useSelector } from 'react-redux';
 import styles from './styles'
+import setData from '../../utils/setData'
 
 const HeadTable = ['Producto', 'Precio $', 'Precio Bs.', 'Acciones'];
 let DataTable = [];
@@ -14,6 +13,18 @@ const InventoryTable = () => {
   const products = useSelector((state) => state.productsFiltered);
   const dolar = useSelector((state) => state.dolar);
   const dispatch = useDispatch();
+
+  const [refreshing, setRefreshing] = React.useState(false);
+  const wait = (timeout) => {
+    return new Promise(resolve => {
+      setTimeout(resolve, timeout);
+    });
+    }
+    const onRefresh = React.useCallback(() => {
+      setRefreshing(true);
+      setData(dispatch)
+      wait(2000).then(() => setRefreshing(false));
+    }, []);
 
   const setModalShow = (type, product) => {
     dispatch({
@@ -42,15 +53,7 @@ const InventoryTable = () => {
   };
 
 
-  useEffect(() => {
-    fetch('https://inpimaca-api.herokuapp.com/inventario')
-      .then(response => response.json())
-      .then(data => dispatch({
-        type: 'SET_PRODUCTS',
-        payload: data,
-      }))
-      .catch((err) => console.error(err));
-  },[])
+  useEffect(() => setData(dispatch),[])
   DataTable=setDataTable(products, DataTable, dolar);
   return (
     <View style={styles.tableContainer}>
@@ -61,7 +64,10 @@ const InventoryTable = () => {
           textStyle={{ textAlign: 'center', fontWeight:'bold', fontSize:15 }}
         />
       </Table>
-      <ScrollView>
+        <ScrollView
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh}/>
+          }>
         <Table>
           <Rows
             data={DataTable}

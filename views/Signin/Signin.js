@@ -32,12 +32,12 @@ const Signin = () => {
                     payload:user
                 });
                 navigation.navigate('Inventory')
-            }else {
-                throw 'Usuario/contraseña invalido';
             }
-        })
+           }
+        )
         .catch((error) => {
             Alert.alert('Usuario/contraseña invalido');
+            console.log(error)
         });
     };
 
