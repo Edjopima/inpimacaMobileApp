@@ -7,7 +7,6 @@ import FilterByCategory from './FilterByCategory'
 import {useDispatch, useSelector} from 'react-redux';
 import ModalContainer from '../Modals/ModalContainer';
 import Header from '../Header/Header';
-import setData from './setData'
 
 const Inventory = () => {
     const dispatch = useDispatch();

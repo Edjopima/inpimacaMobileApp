@@ -7,4 +7,4 @@ const getActualDate = () => {
     return actualDate;
 }
 
-module.exports={getActualDate}
+export default getActualDate;

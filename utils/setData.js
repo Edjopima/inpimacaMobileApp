@@ -1,30 +1,27 @@
-import {setDolar} from './setDolar'
-import {getActualDate} from './getActualDate'
+import setDolar from './setDolar'
+import getActualDate from './getActualDate'
 
-const setData = (dispatch) => {
-    let dolarToday;
-    let lastDolarData;
+const setData = async (dispatch) => {
     fetch('https://inpimaca-api.herokuapp.com/inventario')
         .then(response => response.json())
         .then(data => dispatch({
             type: 'SET_PRODUCTS',
             payload: data,
-      }))
+    }))
         .catch((err) => console.error(err));
-    fetch('https://s3.amazonaws.com/dolartoday/data.json')
+
+    const dolarToday = await fetch('https://s3.amazonaws.com/dolartoday/data.json')
         .then(response=> response.json())
-        .then(data=>{
-            dolarToday=data.USD.dolarToday;
-        })
+        .then(data=> data.USD.dolartoday)
         .catch((err)=>console.log(err))
-    fetch('https://inpimaca-api.herokuapp.com/dolar')
+    const lastDolar = await fetch('https://inpimaca-api.herokuapp.com/dolar')
         .then((response)=>response.json())
-        .then(data => lastDolarData = data)
+        .then(data => data)
         .catch((err)=>console.log(err))
-    const actualDate=getActualDate();
-    const {lastDolar,lastDolarDate,lastDolarToday} = lastDolarData
-    console.log(lastDolar,lastDolarDate,lastDolarToday,dolarToday,actualDate);
-    setDolar(dispatch,lastDolar,lastDolarDate,lastDolarToday,dolarToday,actualDate);
+    const actualDate = getActualDate();
+
+    console.log(lastDolar.dolar,lastDolar.date.slice(0,10),lastDolar.dolarToday,dolarToday,actualDate);
+    setDolar(dispatch,lastDolar.dolar,lastDolar.date.slice(0,10),lastDolar.dolarToday,dolarToday,actualDate);
     
 }
 export default setData
