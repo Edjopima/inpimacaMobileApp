@@ -1,5 +1,6 @@
 const setDolar=(dispatch, lastDolar,lastDolarDate,lastDolarToday,dolarToday,actualDate)=>{
     let message;
+    console.log(dolarToday,lastDolarToday,actualDate,lastDolarDate)
     if (dolarToday===lastDolarToday && actualDate===lastDolarDate){
         console.log('no hay cambios en el dolar');
         dispatch({
