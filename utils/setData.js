@@ -20,8 +20,8 @@ const setData = async (dispatch) => {
         .catch((err)=>console.log(err))
     const actualDate = getActualDate();
 
-    console.log(lastDolar.dolar,lastDolar.date.slice(0,10),lastDolar.dolarToday,dolarToday,actualDate);
-    setDolar(dispatch,lastDolar.dolar,lastDolar.date.slice(0,10),lastDolar.dolarToday,dolarToday,actualDate);
+    console.log(parseFloat(lastDolar.dolar),lastDolar.date.slice(0,10),parseFloat(lastDolar.dolarToday),dolarToday,actualDate);
+    setDolar(dispatch,parseFloat(lastDolar.dolar),lastDolar.date.slice(0,10),parseFloat(lastDolar.dolarToday),dolarToday,actualDate);
     
 }
 export default setData

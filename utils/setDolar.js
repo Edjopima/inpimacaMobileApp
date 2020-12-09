@@ -7,7 +7,7 @@ const setDolar=(dispatch, lastDolar,lastDolarDate,lastDolarToday,dolarToday,actu
             type:'SET_DOLAR',
             payload:{
                 dolarToday,
-                dolar:dolarToday
+                dolar:lastDolar
             }
         });
     }else{
