@@ -7,7 +7,7 @@ const setDolar=(dispatch, lastDolar,lastDolarDate,lastDolarToday,dolarToday,actu
             type:'SET_DOLAR',
             payload:{
                 dolarToday,
-                dolar:lastDolar
+                dolar:dolarToday
             }
         });
     }else{
@@ -15,7 +15,7 @@ const setDolar=(dispatch, lastDolar,lastDolarDate,lastDolarToday,dolarToday,actu
             message={
                 date:actualDate,
                 dolarToday:dolarToday,
-                dolar: lastDolar
+                dolar: dolarToday
             }
             console.log(message);
         }else{
@@ -30,7 +30,7 @@ const setDolar=(dispatch, lastDolar,lastDolarDate,lastDolarToday,dolarToday,actu
             type:'SET_DOLAR',
             payload:{
                 dolarToday,
-                dolar:message.dolar
+                dolar:dolarToday
             }
         });
         fetch('https://inpimaca-api.herokuapp.com/addDolar', {

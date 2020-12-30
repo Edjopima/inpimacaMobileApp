@@ -22,6 +22,5 @@ const setData = async (dispatch) => {
 
     console.log(parseFloat(lastDolar.dolar),lastDolar.date.slice(0,10),parseFloat(lastDolar.dolarToday),dolarToday,actualDate);
     setDolar(dispatch,parseFloat(lastDolar.dolar),lastDolar.date.slice(0,10),parseFloat(lastDolar.dolarToday),dolarToday,actualDate);
-    
 }
 export default setData
