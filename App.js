@@ -1,9 +1,9 @@
 import React from 'react';
-import Header from './src/components/Header/Header';
+import Inventory from './src/components/inventory/Inventory'
 
 const App = () => {
   return (
-    <Header />
+    <Inventory />    
   );
 }
 
