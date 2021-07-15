@@ -6,7 +6,7 @@ const InventoryTable = ({inventory}) => {
   return (
     <View>
       <View style={styles.row}>
-        <Text style={styles.text}>Producto</Text>
+        <Text style={[styles.text, {width:100}]}>Producto</Text>
         <Text style={styles.text}>Precio $</Text>
         <Text style={styles.text}>Precio Bs</Text>
         <Text style={styles.text}>Acciones</Text>
@@ -28,11 +28,13 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
-    padding: 16,
+    padding: 10,
     borderBottomWidth: 1,
+    marginBottom: 10,
   },
   text: {
-    width:80,
+    width:90,
+    textAlign: 'center',
     },
 });
 
