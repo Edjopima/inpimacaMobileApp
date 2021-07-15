@@ -45,7 +45,7 @@ const styles = StyleSheet.create({
     height: 40,
     },
   searchBox__input:{
-    width: '80%',
+    width: '85%',
   },
   icon: {
     width: 20,
