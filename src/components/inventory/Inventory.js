@@ -6,11 +6,19 @@ import InventoryTable from './InventoryTable';
 import SearchBox from './SearchBox';
 import useInventory from '../../hooks/useInventory';
 import useDolarOptions from '../../hooks/useDolarOptions';
+import ModalContainer from '../ModalContainer/ModalContainer';
 
 const Inventory = () => {
-  const inventory = useInventory();
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState('');
+  const [modalElement, setModalElement] = useState({});
+
+  const modalActions = {setModalElement, setShowModal, setModalType}
+
+  const inventory = useInventory(modalActions);
   const dolarOptions = useDolarOptions();
   const [filteredInventory, setFilteredInventory] = useState(inventory);
+
 
   const handleSearch = (query) => {
     const newInventory = inventory.filter((item) => {
@@ -28,8 +36,20 @@ const Inventory = () => {
       <Header />
       <Text style={{textAlign:'center', fontSize:30, fontWeight:'bold'}}>Inventario</Text>
       <DolarMonitor options={dolarOptions} />
-      <SearchBox handleSearch={handleSearch}/>
-      <InventoryTable inventory={filteredInventory}/>
+      <SearchBox 
+        handleSearch={handleSearch}
+        modalActions={modalActions}
+      />
+      <InventoryTable 
+        inventory={filteredInventory}
+        setModalElement = {setModalElement}
+      />
+      <ModalContainer 
+        show={showModal}
+        type = {modalType}
+        element = {modalElement}
+        modalActions={modalActions}
+      />
     </View>
   );
 };

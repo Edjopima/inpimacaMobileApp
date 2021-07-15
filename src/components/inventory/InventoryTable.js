@@ -16,7 +16,7 @@ const InventoryTable = ({inventory}) => {
         renderItem={({item}) => 
           <InventoryItem 
             item={item}
-            key={item.id} 
+            key={item.id}
         />} 
       />
     </View>

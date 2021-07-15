@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
+import ActionButtons from '../components/inventory/ActionButtons';
 import useDolarOptions from './useDolarOptions';
 import useGetRequest from './useGetRequest';
 
-const useInventory = () => {
+const useInventory = (modalActions) => {
   const [inventory, setInventory] = useState([]);
 
   const processInventory = (inventory, dolarOptions) => {
@@ -11,7 +12,7 @@ const useInventory = () => {
         ...item,
         priceUsd: item.price,
         priceBs: (item.price * dolarOptions[1].value).toFixed(2),
-        actions:'lol'
+        actions:<ActionButtons modalActions={modalActions} item={item}/>
       }
     })
   }

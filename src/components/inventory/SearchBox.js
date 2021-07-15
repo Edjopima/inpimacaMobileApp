@@ -3,8 +3,15 @@ import {View, TextInput, Pressable, StyleSheet} from 'react-native';
 import AddIcon from '../../assets/plus-solid.svg'
 import SearchIcon from '../../assets/search-solid.svg'
 
-const SearchBox = ({handleSearch}) => {
+const SearchBox = ({handleSearch, modalActions}) => {
   const [query, setQuery] = useState('');
+
+  const {setModalElement, setShowModal, setModalType} = modalActions;
+
+  const openModal = (type) => {
+    setShowModal(true);
+    setModalType(type);
+  }
 
   const onChange = (text) => {
     setQuery(text);
@@ -22,7 +29,9 @@ const SearchBox = ({handleSearch}) => {
         value={query}
         placeholder="Buscar"
       />
-      <Pressable>
+      <Pressable
+        onPress={() => openModal('add')}
+      >
         <AddIcon style={styles.icon}/>
       </Pressable>
     </View>
