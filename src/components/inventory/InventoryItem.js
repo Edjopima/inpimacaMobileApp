@@ -4,7 +4,7 @@ import {View, Text, StyleSheet} from 'react-native';
 const InventoryItem = ({item}) => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{item.name}</Text>
+      <Text style={styles.text}>{item.product}</Text>
       <Text style={styles.text}>{item.priceUsd}</Text>
       <Text style={styles.text}>{item.priceBs}</Text>
       <Text style={styles.text}>{item.actions}</Text>

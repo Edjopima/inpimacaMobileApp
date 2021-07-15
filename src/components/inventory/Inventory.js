@@ -1,23 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, Text, Pressable} from 'react-native';
 import Header from '../Header/Header';
 import DolarMonitor from '../DolarMonitor/DolarMonitor';
 import InventoryTable from './InventoryTable';
 import SearchBox from './SearchBox';
+import useInventory from '../../hooks/useInventory';
+import useDolarOptions from '../../hooks/useDolarOptions';
 
 const Inventory = () => {
-  const initialInventory = [{id:1, name:'Harina de maiz pan',priceUsd:1,priceBs:3000,actions:'lol' },{id:2, name:'Harina ',priceUsd:2,priceBs:3100,actions:'lol' }]
-  const [inventory, setInventory] = React.useState(initialInventory);
-  const [filteredInventory, setFilteredInventory] = React.useState(inventory);
+  const inventory = useInventory();
+  const dolarOptions = useDolarOptions();
+  const [filteredInventory, setFilteredInventory] = useState(inventory);
 
   const handleSearch = (query) => {
     const newInventory = inventory.filter((item) => {
-      return item.name.toLowerCase().includes(query.toLowerCase());
+      return item.product.toLowerCase().includes(query.toLowerCase());
     })
     setFilteredInventory(newInventory);
   }
 
-  const dolarOptions = [{name:'Dolar Today', value: 3000}, {name:'Dolar Compra', value:3100}];
+  useEffect(() => {
+    setFilteredInventory(inventory);
+  }, [inventory]);
 
   return(
     <View>
