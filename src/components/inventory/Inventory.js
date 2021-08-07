@@ -7,18 +7,20 @@ import SearchBox from './SearchBox';
 import useInventory from '../../hooks/useInventory';
 import useDolarOptions from '../../hooks/useDolarOptions';
 import ModalContainer from '../ModalContainer/ModalContainer';
+import { useSelector } from 'react-redux';
 
 const Inventory = () => {
+  const store = useSelector(store=>store)
+  const { inventory, dolarOptions } = store
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState('');
   const [modalElement, setModalElement] = useState({});
 
   const modalActions = {setModalElement, setShowModal, setModalType}
 
-  const inventory = useInventory(modalActions);
-  const dolarOptions = useDolarOptions();
+  useInventory(modalActions);
+  useDolarOptions();
   const [filteredInventory, setFilteredInventory] = useState(inventory);
-
 
   const handleSearch = (query) => {
     const newInventory = inventory.filter((item) => {

@@ -23,16 +23,19 @@ const ModalContainer = ({show, type, element, modalActions}) => {
       type={type}
       closeModal={closeModal}
       element={element}
+      modalActions={modalActions}
     />,
     add: <EditAddModal 
       type={type}
       closeModal={closeModal}
       element={element}
+      modalActions={modalActions}
     />,
     delete: <DelModal 
       item={element}
       closeModal={closeModal}
       deleteElement={deleteElement}
+      modalActions={modalActions}
     />
   }
 

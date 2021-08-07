@@ -1,29 +1,25 @@
 import React, { useEffect, useState } from 'react';
-import ActionButtons from '../components/inventory/ActionButtons';
+import { useDispatch, useSelector } from 'react-redux';
 import useDolarOptions from './useDolarOptions';
 import useGetRequest from './useGetRequest';
+import processInventoryElement from '../utils/processInventoryElement';
 
 const useInventory = (modalActions) => {
   const [inventory, setInventory] = useState([]);
-
-  const processInventory = (inventory, dolarOptions) => {
-    return inventory.map((item) => {
-      return {
-        ...item,
-        priceUsd: item.price,
-        priceBs: (item.price * dolarOptions[1].value).toFixed(2),
-        actions:<ActionButtons modalActions={modalActions} item={item}/>
-      }
-    })
-  }
+  const dipatch = useDispatch()
 
   const baseInventory=useGetRequest('https://inpimaca-api.herokuapp.com/inventario');
   const dolarOptions = useDolarOptions();
 
   useEffect(()=>{
     if (baseInventory){
-      const processedInventory = processInventory(baseInventory, dolarOptions)
+
+      const processedInventory = baseInventory.map(element => processInventoryElement(element, dolarOptions, modalActions))
       setInventory(processedInventory);
+      dipatch({
+        type:'SET_INVENTORY',
+        payload:processedInventory
+      })
     }
   },[baseInventory, dolarOptions]);
 
