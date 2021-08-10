@@ -12,6 +12,7 @@ const InventoryTable = ({inventory}) => {
         <Text style={styles.text}>Acciones</Text>
       </View>
       <FlatList
+        style={styles.listContainer}
         data={inventory}
         renderItem={({item}) => 
           <InventoryItem 
@@ -25,17 +26,24 @@ const InventoryTable = ({inventory}) => {
 
 const styles = StyleSheet.create({
   row: {
+    backgroundColor:'#F5F8FA',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 10,
     borderBottomWidth: 1,
-    marginBottom: 10,
+    borderColor:'#FF511B',
+    borderTopLeftRadius:40,
+    borderTopRightRadius:40
   },
   text: {
     width:90,
     textAlign: 'center',
     },
+  listContainer:{
+    paddingTop:10,
+    backgroundColor:'#F5F8FA'
+  },
 });
 
 export default InventoryTable;

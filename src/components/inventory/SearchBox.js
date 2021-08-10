@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
     width: '70%',
     flexDirection: 'row',
     alignItems: 'center',
-    borderColor: '#000',
+    borderColor: '#0074D5',
     borderWidth: 1,
     alignSelf:'center',
     borderRadius: 50,
@@ -67,7 +67,7 @@ const styles = StyleSheet.create({
   icon: {
     width: 20,
     height: 20,
-    color: '#000',
+    color: '#0074D5',
   },
 });
 
