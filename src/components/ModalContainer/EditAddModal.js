@@ -6,12 +6,14 @@ import api from '../../libs/api';
 import { useDispatch } from 'react-redux';
 
 const EditAddModal = ({type, element, closeModal, modalActions}) => {
+// component variables
   const dispatch = useDispatch()
   const [productName, setProductName] = useState('');
   const [productPrice, setProductPrice] = useState('');
   const [productCategory, setProductCategory] = useState('');
   const [error, setError] = useState(false);
 
+// submit function
   const onSubmit = async () => {
     const errorMessages = {
       edit:'Error editando el producto',
@@ -19,6 +21,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
     }
     let product = {}
     setError(false);
+    // set element to send to the api
     if (type==='edit'){
       product.id=element.id
       product.product= productName
@@ -29,6 +32,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
       product.price= productPrice
       product.category= productCategory
     }
+    // api request
     try {
       const response = await api.editAddProduct(type, product)
       if (!response){
@@ -55,11 +59,11 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
         }
       }
     } catch (error) {
-      console.log(error)
       setError(error.message)
     }
   };
 
+// set the modal data when it changes
   useEffect(()=>{
     if(type === 'edit') {
       setProductName(element.product);
@@ -68,6 +72,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
     }
   },[type,element])
 
+// render function
   return (
     <View>
       <Text style={styles.title} >{(type==='edit')?'Editar Producto':'Agregar Producto'}</Text>

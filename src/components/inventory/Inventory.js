@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import {View, Text, Pressable} from 'react-native';
+import {View, Text} from 'react-native';
 import Header from '../Header/Header';
 import DolarMonitor from '../DolarMonitor/DolarMonitor';
 import InventoryTable from './InventoryTable';
@@ -10,6 +10,7 @@ import ModalContainer from '../ModalContainer/ModalContainer';
 import { useSelector } from 'react-redux';
 
 const Inventory = () => {
+// component variables
   const store = useSelector(store=>store)
   const { inventory, dolarOptions } = store
   const [showModal, setShowModal] = useState(false);
@@ -18,10 +19,12 @@ const Inventory = () => {
 
   const modalActions = {setModalElement, setShowModal, setModalType}
 
+// get inventory and dolar options using custom hooks
   useInventory(modalActions);
   useDolarOptions();
   const [filteredInventory, setFilteredInventory] = useState(inventory);
 
+// search funciton
   const handleSearch = (query) => {
     const newInventory = inventory.filter((item) => {
       return item.product.toLowerCase().includes(query.toLowerCase());
@@ -29,10 +32,12 @@ const Inventory = () => {
     setFilteredInventory(newInventory);
   }
 
+// every time that the inventory chagne it would be seted in filteredInventory variable
   useEffect(() => {
     setFilteredInventory(inventory);
   }, [inventory]);
 
+// redner fucntion
   return(
     <View>
       <Header />

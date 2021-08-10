@@ -7,12 +7,14 @@ import styles from './ModalStyles';
 const ModalContainer = ({show, type, element, modalActions}) => {
   const {setModalElement, setShowModal, setModalType} = modalActions;
 
+// clear state and close modal fucniton 
   const closeModal = () => {
     setShowModal(false);
     setModalElement({});
     setModalType('');
   }
 
+// object used to return the modal component
   const renderModal = {
     edit: <EditAddModal 
       type={type}
@@ -33,6 +35,7 @@ const ModalContainer = ({show, type, element, modalActions}) => {
     />
   }
 
+// render function
   return (
     <Modal
       transparent={true}

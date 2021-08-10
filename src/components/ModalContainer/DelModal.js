@@ -5,11 +5,14 @@ import api from '../../libs/api';
 import styles from './ModalStyles';
 
 const DelModal = ({item,closeModal}) => {
+// component variables
   const [error, setError] = useState(false)
   const dispatch = useDispatch()
 
+// delete element fucniton 
   const deleteElement = async (item) => {
     setError(false)
+    // api call
     try {
       const element = await api.deleteElement(item)
       if (!element) {
@@ -25,6 +28,7 @@ const DelModal = ({item,closeModal}) => {
     closeModal();
   };
 
+// render function
   return (
     <View >
       <Text style={styles.title}>Eliminar Producto</Text>
