@@ -71,7 +71,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
   return (
     <View>
       <Text style={styles.title} >{(type==='edit')?'Editar Producto':'Agregar Producto'}</Text>
-      {error && <Text>{error}</Text>}
+      {error && <Text style={styles.error}>{error}</Text>}
       <TextInput 
         style={styles.textInput}
         onChangeText={text=>setProductName(text)}

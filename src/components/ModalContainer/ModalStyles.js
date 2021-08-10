@@ -64,6 +64,9 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
+  error:{
+    color:'red',
+  },
 });
 
 export default styles;

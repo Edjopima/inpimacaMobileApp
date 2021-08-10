@@ -13,11 +13,6 @@ const ModalContainer = ({show, type, element, modalActions}) => {
     setModalType('');
   }
 
-  const deleteElement = (item) => {
-    console.log(item);
-    closeModal();
-  };
-
   const renderModal = {
     edit: <EditAddModal 
       type={type}
@@ -34,7 +29,6 @@ const ModalContainer = ({show, type, element, modalActions}) => {
     delete: <DelModal 
       item={element}
       closeModal={closeModal}
-      deleteElement={deleteElement}
       modalActions={modalActions}
     />
   }

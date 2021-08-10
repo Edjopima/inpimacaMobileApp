@@ -1,18 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {View, TextInput, Pressable, StyleSheet} from 'react-native';
+import { useSelector } from 'react-redux';
 import AddIcon from '../../assets/plus-solid.svg'
 import SearchIcon from '../../assets/search-solid.svg'
 
 const SearchBox = ({handleSearch, modalActions}) => {
+// component variables
   const [query, setQuery] = useState('');
+  const inventory = useSelector(state => state.inventory)
 
-  const {setModalElement, setShowModal, setModalType} = modalActions;
+// Define modal variables and functions
+  const {setShowModal, setModalType} = modalActions;
 
   const openModal = (type) => {
     setShowModal(true);
     setModalType(type);
   }
 
+// On change function to trigger the search 
   const onChange = (text) => {
     setQuery(text);
     if (handleSearch){
@@ -20,6 +25,7 @@ const SearchBox = ({handleSearch, modalActions}) => {
     }
   }
 
+// render function
   return (
     <View style={styles.searchBox}>
       <SearchIcon style={styles.icon}/>
@@ -38,6 +44,8 @@ const SearchBox = ({handleSearch, modalActions}) => {
   );
 }
 
+
+// Styles
 const styles = StyleSheet.create({
   searchBox: {
     marginTop: 15,

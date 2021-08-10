@@ -2,7 +2,6 @@ import React from 'react';
 import ActionButtons from '../components/inventory/ActionButtons';
 
 const processInventoryElement = (element, dolarOptions, modalActions) => {
-  console.log(element)
     return {
       ...element,
       priceUsd: element.price,
