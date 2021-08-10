@@ -1,3 +1,19 @@
+const login = async (data) => {
+  const url = 'https://inpimaca-api.herokuapp.com/iniciarSesion'
+  try {
+    const res = await fetch(url,{
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data)
+    })
+    clearTimeout(id)
+    const user = res.json()
+    return user
+  } catch (error) {
+    return error
+  }
+}
+
 const editAddProduct = async (type, element) => {
   const typeUrl = {
     edit: 'https://inpimaca-api.herokuapp.com/actualizarProducto',
@@ -13,7 +29,6 @@ const editAddProduct = async (type, element) => {
     const data = await res.json()
     return data
   } catch (error) {
-    console.error(error);
     return false
   }
 }
@@ -29,12 +44,12 @@ const deleteElement = async (element) => {
     const data = await res.json()
     return data
   } catch (error) {
-    console.error(error);
     return false
   }
 }
 
 const api = {
+  login,
   editAddProduct, 
   deleteElement,
 }

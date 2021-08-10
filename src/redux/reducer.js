@@ -2,6 +2,9 @@ import processInventoryElement from "../utils/processInventoryElement"
 
 const reducer = (state, action) => {
   switch(action.type) {
+    case 'SET_LOGGED_USER':
+      return {...state, loggedUser: action.payload}
+
     case 'SET_INVENTORY':
       return {...state, inventory:action.payload}
 

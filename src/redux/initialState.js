@@ -1,4 +1,5 @@
 const initialState = {
+  loggedUser:{},
   baseInventory: [],
   inventory: [],
   dolarOptions: [],
