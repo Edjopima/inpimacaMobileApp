@@ -29,6 +29,20 @@ const reducer = (state, action) => {
       
     case 'SET_DOLAR_OPTIONS':
       return {...state, dolarOptions: action.payload}
+
+    case 'ADD_TO_CART':
+      const  item = state.shoppingCart.find((e)=>e.id===action.payload.id);
+      if (item) {
+        const newItem = {
+          ...item,
+          quantity:item.quantity + action.payload.quantity
+        }
+        const shoppingCart = state.shoppingCart
+        shoppingCart.splice(shoppingCart.indexOf(item),1,newItem)
+        return {...state, shoppingCart}
+      }
+      return {...state, shoppingCart:[...state.shoppingCart, action.payload]}
+      
     default:
       return state
   }

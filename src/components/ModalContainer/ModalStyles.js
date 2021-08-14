@@ -67,6 +67,19 @@ const styles = StyleSheet.create({
   error:{
     color:'red',
   },
+  row:{
+    flexDirection:'row',
+    justifyContent:'space-between',
+    alignItems:'center',
+    marginBottom:10,
+  },
+  textInputSmall:{
+    height:40,
+    width:65,
+    marginBottom:10,
+    borderBottomWidth:1,
+    textAlign:'center'
+  },
 });
 
 export default styles;

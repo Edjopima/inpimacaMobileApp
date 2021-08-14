@@ -3,6 +3,7 @@ const initialState = {
   baseInventory: [],
   inventory: [],
   dolarOptions: [],
+  shoppingCart: [],
 }
 
 export default initialState

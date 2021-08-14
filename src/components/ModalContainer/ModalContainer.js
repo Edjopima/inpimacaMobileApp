@@ -2,6 +2,7 @@ import React from 'react';
 import { Modal, View, Text, Pressable } from 'react-native';
 import DelModal from './DelModal';
 import EditAddModal from './EditAddModal';
+import AddToCartModal from './AddToCartModal';
 import styles from './ModalStyles';
 
 const ModalContainer = ({show, type, element, modalActions}) => {
@@ -32,7 +33,11 @@ const ModalContainer = ({show, type, element, modalActions}) => {
       item={element}
       closeModal={closeModal}
       modalActions={modalActions}
-    />
+    />,
+    addToCart: <AddToCartModal
+      element={element}
+      closeModal={closeModal}
+      />
   }
 
 // render function
