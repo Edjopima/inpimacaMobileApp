@@ -6,7 +6,6 @@ const login = async (data) => {
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify(data)
     })
-    clearTimeout(id)
     const user = res.json()
     return user
   } catch (error) {

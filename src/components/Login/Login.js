@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { View,Text,TextInput,Pressable,Image,StyleSheet, Alert } from 'react-native';
 import { useDispatch } from 'react-redux';
 import api from '../../libs/api';
+import Storage from '../../libs/storage';
 
 const Login = () => {
 // dispatcher
@@ -26,8 +27,11 @@ const Login = () => {
           type:'SET_LOGGED_USER',
           payload:loggedUser,
         })
+        const stringUser = JSON.stringify(loggedUser)
+        await Storage.instance.store('user',stringUser)
       }
     } catch (error) {
+      console.log(error)
       if (error.message==='wrong credentials'){
         Alert.alert('Usuario o contraseña invalidos')
       } else {
