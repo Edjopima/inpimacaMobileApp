@@ -31,10 +31,11 @@ const styles = StyleSheet.create({
     width:220,
     marginBottom:10,
     borderBottomWidth:1,
+    borderColor:'#FF511B',
   },
   pickerContainer:{
     borderWidth:1,
-    borderColor:'#000',
+    borderColor:'#FF511B',
     borderRadius:15,
     height:30,
     marginBottom:20,
@@ -66,6 +67,9 @@ const styles = StyleSheet.create({
   },
   error:{
     color:'red',
+    fontSize:12,
+    marginBottom:10,
+    textAlign:'center',
   },
   row:{
     flexDirection:'row',
@@ -78,7 +82,8 @@ const styles = StyleSheet.create({
     width:65,
     marginBottom:10,
     borderBottomWidth:1,
-    textAlign:'center'
+    textAlign:'center',
+    borderColor:'#FF511B',
   },
 });
 

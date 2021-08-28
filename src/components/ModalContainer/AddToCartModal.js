@@ -5,6 +5,7 @@ import styles from './ModalStyles';
 
 const AddToCartModal = ({element, closeModal}) => {
   const [quantity, setQuantity] = useState('')
+  const [error, setError] = useState(false)
   const dispatch = useDispatch()
 
   const reduceQuantity = () => {
@@ -26,21 +27,25 @@ const AddToCartModal = ({element, closeModal}) => {
   }
 
   const onSubmit = (element) => {
-    const data = {
-      ...element,
-      quantity:parseInt(quantity),
+    if (parseInt(quantity) > 0){
+      const data = {
+        ...element,
+        quantity:parseInt(quantity),
+      }
+      dispatch({
+        type: 'ADD_TO_CART',
+        payload: data
+      })
+      closeModal() 
+    } else{
+      setError('Ingrese una cantidad valida')
     }
-    console.log(data)
-    dispatch({
-      type: 'ADD_TO_CART',
-      payload: data
-    })
-    closeModal()
   }
 
   return (
     <View>
       <Text style={styles.title}>Añadir al carrito</Text>
+      {error && <Text style={styles.error}>{error}</Text>}
       <Text style={{textAlign:'center', marginBottom:10}}>{element.product}</Text>
       <View style={styles.row}>
         <Pressable
