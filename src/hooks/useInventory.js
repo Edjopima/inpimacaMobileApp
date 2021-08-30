@@ -24,10 +24,12 @@ const useInventory = (modalActions) => {
       type:'SET_INVENTORY',
       payload:processedInventory
     })
-    dipatch({
-      type:'SET_DOLAR_OPTIONS',
-      payload:JSON.parse(stringDolarOptions)
-    })
+    if (stringDolarOptions){
+      dipatch({
+        type:'SET_DOLAR_OPTIONS',
+        payload:JSON.parse(stringDolarOptions)
+      })
+    }
   } , [inventory])
 
   useEffect(async ()=>{

@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
     paddingTop:10,
   },
   listContainer:{
-    height: '60%'
+    height: '50%'
   },
   emptyCart:{
     height:'80%',
