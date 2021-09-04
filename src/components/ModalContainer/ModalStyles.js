@@ -23,10 +23,12 @@ const styles = StyleSheet.create({
     marginBottom: 20,
   },
   text:{
+    color: '#000',
     width: 250,
     marginBottom:20,
   },
   textInput:{
+    color: '#000',
     height:40,
     width:220,
     marginBottom:10,
@@ -34,6 +36,7 @@ const styles = StyleSheet.create({
     borderColor:'#FF511B',
   },
   pickerContainer:{
+    color: '#000',
     borderWidth:1,
     borderColor:'#FF511B',
     borderRadius:15,
@@ -45,6 +48,7 @@ const styles = StyleSheet.create({
     alignItems:'center',
   },
   picker:{
+    color: '#000',
     height:30,
     width:180,
   },
@@ -78,6 +82,7 @@ const styles = StyleSheet.create({
     marginBottom:10,
   },
   textInputSmall:{
+    color: '#000',
     height:40,
     width:65,
     marginBottom:10,

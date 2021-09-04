@@ -34,6 +34,7 @@ const SearchBox = ({handleSearch, modalActions}) => {
         onChangeText={onChange}
         value={query}
         placeholder="Buscar"
+        placeholderTextColor="#999"
       />
       <Pressable
         onPress={() => openModal('add')}
@@ -62,6 +63,7 @@ const styles = StyleSheet.create({
     height: 40,
     },
   searchBox__input:{
+    color: '#000',
     width: '85%',
   },
   icon: {

@@ -48,12 +48,14 @@ const Login = () => {
         placeholder = 'Usuario' 
         style={styles.input} 
         onChangeText={(text=>setUser(text))}
+        placeholderTextColor='#999'
         />
       <TextInput 
         placeholder = 'Contraseña' 
         secureTextEntry={true} 
         style={styles.input}
         onChangeText={(text=>setPassword(text))}
+        placeholderTextColor='#999'
         />
       <Pressable style={styles.button} onPress={handleLogin}>
         <Text style={styles.buttomText}>Iniciar Sesion</Text>
@@ -67,6 +69,7 @@ const styles = StyleSheet.create({
     flex:1,
     justifyContent:'center',
     alignItems:'center',
+    backgroundColor:'#fff',
   },
   logo:{
     width:90,
@@ -90,6 +93,7 @@ const styles = StyleSheet.create({
       marginBottom:10,
       borderColor:'#FC005F',
       padding:2,
+      color:'#000'
   },
   button: {
       width:110,

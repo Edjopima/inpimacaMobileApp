@@ -2,7 +2,7 @@
 build_project () {
   # Build the project
   echo "Building project..."
-  cd android && ./gradlew assembleRelease
+  cd android && ./gradlew bundleRelease
   cd ..
   echo 'Builded'
 }

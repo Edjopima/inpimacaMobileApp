@@ -60,6 +60,7 @@ const AddToCartModal = ({element, closeModal}) => {
           value={quantity}
           placeholder="Cantidad"
           keyboardType="numeric"
+          placeholderTextColor="#999"
         />
         <Pressable 
           onPress={increaseQuantity}

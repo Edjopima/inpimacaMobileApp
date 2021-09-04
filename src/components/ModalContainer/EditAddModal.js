@@ -82,6 +82,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
         onChangeText={text=>setProductName(text)}
         value={productName}
         placeholder="Nombre del Producto"
+        placeholderTextColor="#999"
       />
       <TextInput 
         style={styles.textInput}
@@ -89,6 +90,7 @@ const EditAddModal = ({type, element, closeModal, modalActions}) => {
         value={productPrice}
         placeholder="Precio"
         keyboardType="numeric"
+        placeholderTextColor="#999"
       />
       <View style={styles.pickerContainer}>
         <Picker
