@@ -11,14 +11,14 @@ const useDolarOptions = () => {
 
   useEffect(()=>{
     if (dolarData){
-      setDolarToday(dolarData.USD.dolartoday);
+      setDolarToday(parseFloat(dolarData.USD.dolartoday.toFixed(2)));
     }
   },[dolarData]);
 
   useEffect(()=>{
     const newDolarOptions = [
       {name:'Dolar Today', value:dolarToday}, 
-      {name: 'Dolar Compra', value:dolarToday + 100000}
+      {name: 'Dolar Compra', value:dolarToday + 0.1}
     ];
     setDolarOptions(newDolarOptions);
     dispath({

@@ -27,10 +27,10 @@ const AddToCartModal = ({element, closeModal}) => {
   }
 
   const onSubmit = (element) => {
-    if (parseInt(quantity) > 0){
+    if (parseFloat(quantity) > 0){
       const data = {
         ...element,
-        quantity:parseInt(quantity),
+        quantity: parseFloat(quantity),
       }
       dispatch({
         type: 'ADD_TO_CART',

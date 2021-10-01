@@ -7,7 +7,7 @@ const DolarMonitor = ({options}) => {
       {options.map((option, index) => {
         return (
           <Text key={index} style={styles.dolarMonitor__text}>
-            {`${option.name}: ${option.value}`}
+            {`${option.name}: ${option.value.toFixed(2)}`}
           </Text>
         )})}
     </View>
